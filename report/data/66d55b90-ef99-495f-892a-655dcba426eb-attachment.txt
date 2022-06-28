@@ -1,0 +1,9 @@
+INFO     test:test_case.py:21 -----开始运行 "录单"用例------
+INFO     test:case_test.py:28 用例原始数据：{'path': '/lu_dan', 'method': 'post', 'remark': '录单，使用运单号', 'is_run': True, 'precondition_sql': None, 'data': {'waybill_no': '$.waybill_no', 'lu_dan_ren': '小江', 'time': 'random_time()', 'str': 'random_str(6)', 'int': 'random_number(5)'}, 'extract_key': None, 'assert_expression': ['"运单创建成功"=="$.msg"'], 'case_title': '录单'}
+INFO     test:parameter_setting.py:49 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江', 'waybill_no': 'lj520'}
+INFO     test:request_.py:32 post请求的最终请求地址:http://192.168.11.177:8001/lu_dan,请求参数{'waybill_no': 'lj520', 'lu_dan_ren': '小江', 'time': '2022-06-28 10:56:37', 'str': 'lmikbt', 'int': 59281}
+INFO     test:request_.py:34 http://192.168.11.177:8001/lu_dan返回结果：{'msg': '运单创建成功', 'waybill_info': {'waybill_no': 'lj520', 'lu_dan_ren': '小江'}}
+INFO     test:case_test.py:16 提取参数字典None
+INFO     test:assert_.py:33 断言表达式新列表：['"运单创建成功"=="运单创建成功"']
+INFO     test:assert_.py:38 断言结果列表:[True]
+INFO     test:case_test.py:47 -----"录单"用例运行完成------

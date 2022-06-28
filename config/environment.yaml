@@ -1,0 +1,22 @@
+##生产环境
+pro_environment:
+  http: https://
+  domain_name: scsc
+  headers:
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9
+    Content-Type: application/json;charset=UTF-8
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+    token: token
+
+
+#这我自己fastapi的搭建的接口环境
+test_environment:
+  http: http://
+  domain_name : 192.168.11.177:8001
+  headers:
+    Accept-Encoding: gzip, deflate
+    Accept-Language: zh-CN,zh;q=0.9
+    Content-Type: application/json;charset=UTF-8
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+    token: em123dca666333

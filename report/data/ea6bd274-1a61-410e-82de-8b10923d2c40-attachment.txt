@@ -1,0 +1,9 @@
+INFO     test:test_case.py:21 -----开始运行 "获取运单号"用例------
+INFO     test:case_test.py:28 用例原始数据：{'path': '/get_waybill_no', 'method': 'get', 'remark': '获取运单号，提取运单号', 'is_run': True, 'precondition_sql': None, 'data': None, 'extract_key': {'waybill_no': '$.waybill_no'}, 'assert_expression': ['"lj520"=="$.waybill_no"'], 'case_title': '获取运单号'}
+INFO     test:request_.py:22 get请求的最终请求地址:http://192.168.11.177:8001/get_waybill_no
+INFO     test:request_.py:24 http://192.168.11.177:8001/get_waybill_no返回结果：{'waybill_no': 'lj520'}
+INFO     test:case_test.py:16 提取参数字典{'waybill_no': '$.waybill_no'}
+INFO     test:parameter_setting.py:41 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江', 'waybill_no': 'lj520'}
+INFO     test:assert_.py:33 断言表达式新列表：['"lj520"=="lj520"']
+INFO     test:assert_.py:38 断言结果列表:[True]
+INFO     test:case_test.py:47 -----"获取运单号"用例运行完成------

@@ -1,0 +1,98 @@
+[2022-06-24  16:46:21] read_file.py -> read_case line:38 [INFO] : 最终执行的用例数据:{'创建账单': {'path': '/create_bill', 'method': 'post', 'remark': '创建账单', 'is_run': True, 'data': {'create_month': '6月', 'create_name': '小江'}, 'extract_key': {'bill_no': '$.bill_no', 'create_name': '$.bill_info.create_name'}, 'assert_expression': ['"lj1314"=="$.bill_no"']}, '确认账单': {'path': '/affirm_bill', 'method': 'post', 'remark': '确认账单', 'is_run': True, 'data': {'affirm_name': '小江', 'bill_no': '$.bill_no'}, 'extract_key': {'affirm_name': '$.bill_info.affirm_name'}, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"']}, '核销账单': {'path': '/write_off_bill', 'method': 'post', 'remark': '核销账单', 'is_run': True, 'data': {'affirm_name': '$.affirm_name', 'bill_no': '$.bill_no', 'create_name': '$.create_name'}, 'extract_key': None, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"', '"小江"=="$.bill_info.create_name"']}, '获取运单号': {'path': '/get_waybill_no', 'method': 'get', 'remark': '获取运单号，提取运单号', 'is_run': True, 'data': None, 'extract_key': {'waybill_no': '$.waybill_no'}, 'assert_expression': ['"lj520"=="$.waybill_no"']}, '录单': {'path': '/lu_dan', 'method': 'post', 'remark': '录单，使用运单号', 'is_run': True, 'data': {'waybill_no': '$.waybill_no', 'lu_dan_ren': '小江', 'time': 'random_time()', 'str': 'random_str(6)', 'int': 'random_number(5)'}, 'extract_key': None, 'assert_expression': ['"运单创建成功"=="$.msg"']}}
+[2022-06-24  16:46:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "创建账单"用例------
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/create_bill', 'method': 'post', 'remark': '创建账单', 'is_run': True, 'data': {'create_month': '6月', 'create_name': '小江'}, 'extract_key': {'bill_no': '$.bill_no', 'create_name': '$.bill_info.create_name'}, 'assert_expression': ['"lj1314"=="$.bill_no"'], 'case_title': '创建账单'}
+[2022-06-24  16:46:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/create_bill,请求参数{'create_month': '6月', 'create_name': '小江'}
+[2022-06-24  16:46:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/create_bill返回结果：{'bill_no': 'lj1314', 'bill_info': {'create_month': '6月', 'create_name': '小江'}}
+[2022-06-24  16:46:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典{'bill_no': '$.bill_no', 'create_name': '$.bill_info.create_name'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:44 [INFO] : 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江'}
+[2022-06-24  16:46:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"lj1314"=="lj1314"']
+[2022-06-24  16:46:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:52 [INFO] : -----"创建账单"用例运行完成------
+[2022-06-24  16:46:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "确认账单"用例------
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/affirm_bill', 'method': 'post', 'remark': '确认账单', 'is_run': True, 'data': {'affirm_name': '小江', 'bill_no': '$.bill_no'}, 'extract_key': {'affirm_name': '$.bill_info.affirm_name'}, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"'], 'case_title': '确认账单'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江'}
+[2022-06-24  16:46:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/affirm_bill,请求参数{'affirm_name': '小江', 'bill_no': 'lj1314'}
+[2022-06-24  16:46:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/affirm_bill返回结果：{'bill_no': 'lj1314', 'bill_info': {'affirm_name': '小江', 'bill_no': 'lj1314'}}
+[2022-06-24  16:46:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典{'affirm_name': '$.bill_info.affirm_name'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:44 [INFO] : 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  16:46:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"小江"=="小江"']
+[2022-06-24  16:46:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:52 [INFO] : -----"确认账单"用例运行完成------
+[2022-06-24  16:46:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "核销账单"用例------
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/write_off_bill', 'method': 'post', 'remark': '核销账单', 'is_run': True, 'data': {'affirm_name': '$.affirm_name', 'bill_no': '$.bill_no', 'create_name': '$.create_name'}, 'extract_key': None, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"', '"小江"=="$.bill_info.create_name"'], 'case_title': '核销账单'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  16:46:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/write_off_bill,请求参数{'affirm_name': '小江', 'bill_no': 'lj1314', 'create_name': '小江'}
+[2022-06-24  16:46:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/write_off_bill返回结果：{'bill_no': 'lj1314', 'bill_info': {'create_name': '小江', 'affirm_name': '小江', 'bill_no': 'lj1314'}}
+[2022-06-24  16:46:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典None
+[2022-06-24  16:46:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"小江"=="小江"', '"小江"=="小江"']
+[2022-06-24  16:46:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True, True]
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:52 [INFO] : -----"核销账单"用例运行完成------
+[2022-06-24  16:46:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "获取运单号"用例------
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/get_waybill_no', 'method': 'get', 'remark': '获取运单号，提取运单号', 'is_run': True, 'data': None, 'extract_key': {'waybill_no': '$.waybill_no'}, 'assert_expression': ['"lj520"=="$.waybill_no"'], 'case_title': '获取运单号'}
+[2022-06-24  16:46:21] request_.py -> get line:23 [INFO] : get请求的最终请求地址:http://192.168.11.177:8001/get_waybill_no
+[2022-06-24  16:46:21] request_.py -> get line:25 [INFO] : http://192.168.11.177:8001/get_waybill_no返回结果：{'waybill_no': 'lj520'}
+[2022-06-24  16:46:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典{'waybill_no': '$.waybill_no'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:44 [INFO] : 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江', 'waybill_no': 'lj520'}
+[2022-06-24  16:46:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"lj520"=="lj520"']
+[2022-06-24  16:46:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:52 [INFO] : -----"获取运单号"用例运行完成------
+[2022-06-24  16:46:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "录单"用例------
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/lu_dan', 'method': 'post', 'remark': '录单，使用运单号', 'is_run': True, 'data': {'waybill_no': '$.waybill_no', 'lu_dan_ren': '小江', 'time': 'random_time()', 'str': 'random_str(6)', 'int': 'random_number(5)'}, 'extract_key': None, 'assert_expression': ['"运单创建成功"=="$.msg"'], 'case_title': '录单'}
+[2022-06-24  16:46:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江', 'waybill_no': 'lj520'}
+[2022-06-24  16:46:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/lu_dan,请求参数{'waybill_no': 'lj520', 'lu_dan_ren': '小江', 'time': '2022-06-24 16:46:21', 'str': 'spqban', 'int': 18887}
+[2022-06-24  16:46:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/lu_dan返回结果：{'msg': '运单创建成功', 'waybill_info': {'waybill_no': 'lj520', 'lu_dan_ren': '小江'}}
+[2022-06-24  16:46:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典None
+[2022-06-24  16:46:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"运单创建成功"=="运单创建成功"']
+[2022-06-24  16:46:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  16:46:21] case_test.py -> case_assert_result line:52 [INFO] : -----"录单"用例运行完成------
+[2022-06-24  17:47:21] read_file.py -> read_case line:38 [INFO] : 最终执行的用例数据:{'创建账单': {'path': '/create_bill', 'method': 'post', 'remark': '创建账单', 'is_run': True, 'data': {'create_month': '6月', 'create_name': '小江'}, 'extract_key': {'bill_no': '$.bill_no', 'create_name': '$.bill_info.create_name'}, 'assert_expression': ['"lj1314"=="$.bill_no"']}, '确认账单': {'path': '/affirm_bill', 'method': 'post', 'remark': '确认账单', 'is_run': True, 'data': {'affirm_name': '小江', 'bill_no': '$.bill_no'}, 'extract_key': {'affirm_name': '$.bill_info.affirm_name'}, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"']}, '核销账单': {'path': '/write_off_bill', 'method': 'post', 'remark': '核销账单', 'is_run': True, 'data': {'affirm_name': '$.affirm_name', 'bill_no': '$.bill_no', 'create_name': '$.create_name'}, 'extract_key': None, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"', '"小江"=="$.bill_info.create_name"']}, '获取运单号': {'path': '/get_waybill_no', 'method': 'get', 'remark': '获取运单号，提取运单号', 'is_run': True, 'data': None, 'extract_key': {'waybill_no': '$.waybill_no'}, 'assert_expression': ['"lj520"=="$.waybill_no"']}, '录单': {'path': '/lu_dan', 'method': 'post', 'remark': '录单，使用运单号', 'is_run': True, 'data': {'waybill_no': '$.waybill_no', 'lu_dan_ren': '小江', 'time': 'random_time()', 'str': 'random_str(6)', 'int': 'random_number(5)'}, 'extract_key': None, 'assert_expression': ['"运单创建成功"=="$.msg"']}}
+[2022-06-24  17:47:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "创建账单"用例------
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/create_bill', 'method': 'post', 'remark': '创建账单', 'is_run': True, 'data': {'create_month': '6月', 'create_name': '小江'}, 'extract_key': {'bill_no': '$.bill_no', 'create_name': '$.bill_info.create_name'}, 'assert_expression': ['"lj1314"=="$.bill_no"'], 'case_title': '创建账单'}
+[2022-06-24  17:47:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/create_bill,请求参数{'create_month': '6月', 'create_name': '小江'}
+[2022-06-24  17:47:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/create_bill返回结果：{'bill_no': 'lj1314', 'bill_info': {'create_month': '6月', 'create_name': '小江'}}
+[2022-06-24  17:47:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典{'bill_no': '$.bill_no', 'create_name': '$.bill_info.create_name'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:44 [INFO] : 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江'}
+[2022-06-24  17:47:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"lj1314"=="lj1314"']
+[2022-06-24  17:47:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:52 [INFO] : -----"创建账单"用例运行完成------
+[2022-06-24  17:47:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "确认账单"用例------
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/affirm_bill', 'method': 'post', 'remark': '确认账单', 'is_run': True, 'data': {'affirm_name': '小江', 'bill_no': '$.bill_no'}, 'extract_key': {'affirm_name': '$.bill_info.affirm_name'}, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"'], 'case_title': '确认账单'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江'}
+[2022-06-24  17:47:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/affirm_bill,请求参数{'affirm_name': '小江', 'bill_no': 'lj1314'}
+[2022-06-24  17:47:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/affirm_bill返回结果：{'bill_no': 'lj1314', 'bill_info': {'affirm_name': '小江', 'bill_no': 'lj1314'}}
+[2022-06-24  17:47:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典{'affirm_name': '$.bill_info.affirm_name'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:44 [INFO] : 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  17:47:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"小江"=="小江"']
+[2022-06-24  17:47:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:52 [INFO] : -----"确认账单"用例运行完成------
+[2022-06-24  17:47:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "核销账单"用例------
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/write_off_bill', 'method': 'post', 'remark': '核销账单', 'is_run': True, 'data': {'affirm_name': '$.affirm_name', 'bill_no': '$.bill_no', 'create_name': '$.create_name'}, 'extract_key': None, 'assert_expression': ['"小江"=="$.bill_info.affirm_name"', '"小江"=="$.bill_info.create_name"'], 'case_title': '核销账单'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江'}
+[2022-06-24  17:47:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/write_off_bill,请求参数{'affirm_name': '小江', 'bill_no': 'lj1314', 'create_name': '小江'}
+[2022-06-24  17:47:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/write_off_bill返回结果：{'bill_no': 'lj1314', 'bill_info': {'create_name': '小江', 'affirm_name': '小江', 'bill_no': 'lj1314'}}
+[2022-06-24  17:47:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典None
+[2022-06-24  17:47:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"小江"=="小江"', '"小江"=="小江"']
+[2022-06-24  17:47:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True, True]
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:52 [INFO] : -----"核销账单"用例运行完成------
+[2022-06-24  17:47:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "获取运单号"用例------
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/get_waybill_no', 'method': 'get', 'remark': '获取运单号，提取运单号', 'is_run': True, 'data': None, 'extract_key': {'waybill_no': '$.waybill_no'}, 'assert_expression': ['"lj520"=="$.waybill_no"'], 'case_title': '获取运单号'}
+[2022-06-24  17:47:21] request_.py -> get line:23 [INFO] : get请求的最终请求地址:http://192.168.11.177:8001/get_waybill_no
+[2022-06-24  17:47:21] request_.py -> get line:25 [INFO] : http://192.168.11.177:8001/get_waybill_no返回结果：{'waybill_no': 'lj520'}
+[2022-06-24  17:47:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典{'waybill_no': '$.waybill_no'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:44 [INFO] : 参数提取完成后的参数池：{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江', 'waybill_no': 'lj520'}
+[2022-06-24  17:47:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"lj520"=="lj520"']
+[2022-06-24  17:47:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:52 [INFO] : -----"获取运单号"用例运行完成------
+[2022-06-24  17:47:21] test_case.py -> test_main line:21 [INFO] : -----开始运行 "录单"用例------
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:31 [INFO] : 用例原始数据：{'path': '/lu_dan', 'method': 'post', 'remark': '录单，使用运单号', 'is_run': True, 'data': {'waybill_no': '$.waybill_no', 'lu_dan_ren': '小江', 'time': 'random_time()', 'str': 'random_str(6)', 'int': 'random_number(5)'}, 'extract_key': None, 'assert_expression': ['"运单创建成功"=="$.msg"'], 'case_title': '录单'}
+[2022-06-24  17:47:21] parameter_setting.py -> parameter_setting line:53 [INFO] : 读取前的参数池{'bill_no': 'lj1314', 'create_name': '小江', 'affirm_name': '小江', 'waybill_no': 'lj520'}
+[2022-06-24  17:47:21] request_.py -> post line:33 [INFO] : post请求的最终请求地址:http://192.168.11.177:8001/lu_dan,请求参数{'waybill_no': 'lj520', 'lu_dan_ren': '小江', 'time': '2022-06-24 17:47:21', 'str': 'zclbjd', 'int': 68441}
+[2022-06-24  17:47:21] request_.py -> post line:35 [INFO] : http://192.168.11.177:8001/lu_dan返回结果：{'msg': '运单创建成功', 'waybill_info': {'waybill_no': 'lj520', 'lu_dan_ren': '小江'}}
+[2022-06-24  17:47:21] case_test.py -> replace_ line:17 [INFO] : 提取参数字典None
+[2022-06-24  17:47:21] assert_.py -> assert_response line:32 [INFO] : 断言表达式新列表：['"运单创建成功"=="运单创建成功"']
+[2022-06-24  17:47:21] assert_.py -> assert_response line:40 [INFO] : 断言结果列表:[True]
+[2022-06-24  17:47:21] case_test.py -> case_assert_result line:52 [INFO] : -----"录单"用例运行完成------

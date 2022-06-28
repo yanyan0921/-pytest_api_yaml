@@ -1,0 +1,29 @@
+获取运单号:
+  path: /get_waybill_no
+  method: get
+  remark: 获取运单号，提取运单号
+  is_run: True
+  precondition_sql:
+  data:
+  extract_key:
+    waybill_no: $.waybill_no
+  assert_expression:
+    ['"lj520"=="$.waybill_no"']
+
+录单:
+  path: /lu_dan
+  method: post
+  remark: 录单，使用运单号
+  is_run: True
+  precondition_sql:
+  data:
+    {
+      "waybill_no":$.waybill_no,
+      "lu_dan_ren":"小江",
+      "time": random_time(),
+      "str": random_str(6),
+      "int": random_number(5)
+    }
+  extract_key:
+  assert_expression:
+    ['"运单创建成功"=="$.msg"']

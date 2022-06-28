@@ -1,0 +1,53 @@
+创建账单:
+  path: /create_bill
+  method: post
+  remark: 创建账单
+  is_run: True
+  precondition_sql:
+    - UPDATE case_test SET title = '标题2', ex = '44' WHERE id = 2
+    - UPDATE case_test SET title = '标题3', ex = '55' WHERE id = 3
+  data:
+    {
+      "create_month": "6月",
+      "create_name": "小江"
+      ,"sql_test": sql-SELECT title FROM case_test where id=2
+      ,"sql_test1": sql-SELECT title FROM case_test where id=3
+    }
+  extract_key:
+    bill_no: $.bill_no
+    create_name: $.bill_info.create_name
+  assert_expression:
+    ['"lj1314"=="$.bill_no"', '"标题2"=="sql-SELECT title FROM case_test where id=2"']
+
+
+确认账单:
+  path: /affirm_bill
+  method: post
+  remark: 确认账单
+  is_run: True
+  precondition_sql:
+  data:
+    {
+      "affirm_name": "小江",
+      "bill_no":$.bill_no
+    }
+  extract_key:
+    affirm_name: $.bill_info.affirm_name
+  assert_expression:
+    ['"小江"=="$.bill_info.affirm_name"']
+
+核销账单:
+  path: /write_off_bill
+  method: post
+  remark: 核销账单
+  is_run: True
+  precondition_sql:
+  data:
+    {
+      "affirm_name": $.affirm_name,
+      "bill_no":$.bill_no,
+      "create_name":$.create_name
+    }
+  extract_key:
+  assert_expression:
+    ['"小江"=="$.bill_info.affirm_name"','"小江"=="$.bill_info.create_name"',]
