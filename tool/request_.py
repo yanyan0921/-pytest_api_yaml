@@ -28,7 +28,7 @@ class Requests:
     def post(cls, path, data):
         url = requests_environment_info(Environment)['ip'] + path
         headers = requests_environment_info(Environment)['headers']
-        allure_description(f'post请求的最终请求地址:{url},请求参数{data}')
+        allure_description(f'最终请求地址:{url}   请求参数:{data}')
         logger.info(f'post请求的最终请求地址:{url},请求参数{data}')
         result = requests.post(url=url, headers=headers, data=json.dumps(data)).json()
         logger.info(f'{url}返回结果：{result}')

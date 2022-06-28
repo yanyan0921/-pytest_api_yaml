@@ -74,6 +74,16 @@ class ReadFile:
             for i in exclude_file:
                 file_list.remove(i)
         return file_list
+    @classmethod
+    def case_file_location(cls,case_title):
+        '''
+        :param case_name: 用例名称
+        :return: 判断这个用例名称是不是在哪一个文件里面（前提用例名称唯一），返回文件名（含路径）
+        '''
+        path_list = cls.file_execute_list()
+        for i in path_list:
+           if case_title in  cls.read_yaml(i).keys():
+               return i
 
 
 if __name__ == '__main__':

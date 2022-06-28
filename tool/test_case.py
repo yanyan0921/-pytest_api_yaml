@@ -18,5 +18,6 @@ from tool import ReadFile
 def test_main(case_data:dict):
     case_title = case_data['case_title']
     allure_title(case_title)
-    logger.info(f'-----开始运行 "{case_title}"用例------')
+    case_file_location = ReadFile.case_file_location(case_data['case_title'])
+    logger.info(f'-----开始运行 "{case_title}"用例,该用例属于{case_file_location}文件------')
     assert case_assert_result(case_data)
