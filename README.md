@@ -38,4 +38,4 @@ https://blog.csdn.net/aaaaaaaaanjjj/article/details/125274053
 
 #### 报告截图
 
-![输入图片说明](report/image.png)
+![输入图片说明](image.png)
