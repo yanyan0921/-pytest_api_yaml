@@ -37,3 +37,11 @@ def allure_description(description):
 #                 indent=4),
 #             step,
 #             allure.attachment_type.JSON)
+def allure_step_no(step: str):
+    """
+    无附件的操作步骤
+    :param step: 步骤名称
+    :return:
+    """
+    with allure.step(step):
+        pass

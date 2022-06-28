@@ -7,6 +7,8 @@
 断言格式 ["'12' in '123'", '"ig" == "$.ig"', '1==1']
 '''
 from jsonpath import jsonpath
+
+from tool.allure_ import allure_step_no
 from tool.log import logger
 from tool.mysql_ import mysql_db
 
@@ -30,6 +32,7 @@ class Assert:
                 sql = i[wz + 1:len(i) - 1]
                 i = i.replace('sql-' + sql, mysql_db.select_db(sql))
             new_assert_list.append(i)
+        allure_step_no(f'断言列表：{new_assert_list}')
         logger.info(f'断言表达式新列表：{new_assert_list}')
         assert_result_list = []
         for i in new_assert_list:

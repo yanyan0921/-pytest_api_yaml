@@ -7,7 +7,7 @@
 '''
 import pytest
 
-from tool.allure_ import allure_title
+from tool.allure_ import allure_title, allure_step_no
 from tool.case_test import case_assert_result
 from tool.log import logger
 from tool import ReadFile
@@ -20,4 +20,5 @@ def test_main(case_data:dict):
     allure_title(case_title)
     case_file_location = ReadFile.case_file_location(case_data['case_title'])
     logger.info(f'-----开始运行 "{case_title}"用例,该用例属于{case_file_location}文件------')
+    allure_step_no(f'该用例属于{case_file_location}文件')
     assert case_assert_result(case_data)
