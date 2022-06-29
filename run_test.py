@@ -20,6 +20,6 @@ if __name__ == '__main__':
     # 直接生成报告html文件
     # os.system('allure generate  report/data -o report/html --clean')
     # 编译报告原文件并启动报告服务
-    os.system('allure serve report/data')
+    os.system('allure serve report/data -p 2008')
 
 

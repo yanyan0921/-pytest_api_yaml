@@ -3,6 +3,11 @@
 from config.config import Environment
 from tool.read_file import ReadFile
 
+def get_ip():
+    '''获取本机ip地址'''
+    import socket
+    res = socket.gethostbyname(socket.gethostname())
+    return res
 
 def requests_environment_info(environment=Environment):
     '''
