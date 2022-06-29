@@ -14,7 +14,7 @@ from tool import get_ip
 def dd_push(allure_ip):
   HEADERS = {"Content-Type": "application/json;charset=utf-8"}
   # 之前复制的接口地址和token信息
-  url = 'https://oapi.dingtalk.com/robot/send?access_token=a3c43eca2320c3f4f3b4daeb8895e9d035327e149c4c70e87c87f073cb65cb93'
+  url = 'https://oapi.dingtalk.com/robot/send?access_token=a3xx'
   #content里面要设置关键字
   data_info = {
     "msgtype": "text",
