@@ -21,6 +21,7 @@ class Requests:
         allure_step_no(f'最终请求地址 {url}')
         logger.info(f'get请求的最终请求地址:{url}')
         result = requests.get(url=url, headers=headers).json()
+        allure_step_no(f'返回结果：{result}')
         logger.info(f'{url}返回结果：{result}')
         return result
 
@@ -32,6 +33,7 @@ class Requests:
         allure_description(f'请求参数:{data}')
         logger.info(f'post请求的最终请求地址:{url},请求参数{data}')
         result = requests.post(url=url, headers=headers, data=json.dumps(data)).json()
+        allure_step_no(f'返回结果：{result}')
         logger.info(f'{url}返回结果：{result}')
         return result
 
