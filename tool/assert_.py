@@ -38,7 +38,7 @@ class Assert:
         for i in new_assert_list:
             assert_result = eval(i)
             assert_result_list.append(assert_result)
-        logger.info(f'断言结果列表:{assert_result_list}')
+        # logger.info(f'断言结果列表:{assert_result_list}')
         if False in assert_result_list:
             return False
         return True

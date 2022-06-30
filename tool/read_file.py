@@ -8,13 +8,12 @@
 from pathlib import Path
 from tool.log import logger
 import yaml
-from config.config import exclude_file, exclude_dir
+from config.config import exclude_file, exclude_dir, Environment
 from tool.mysql_ import mysql_db
 import os
 
 
 class ReadFile:
-
     project_directory = str(Path(__file__).parent.parent) + '/'
 
     @classmethod
@@ -25,6 +24,18 @@ class ReadFile:
         with file as doc:
             content = yaml.load(doc, Loader=yaml.Loader)
             return content
+
+    @classmethod
+    def yaml_write_token(cls, token):
+        if Environment == 'test':
+            test_or_pro = 'test_environment'
+        else:
+            test_or_pro = 'pro_environment'
+        environment_path = 'config/environment.yaml'
+        environment = cls.read_yaml(environment_path)
+        environment[test_or_pro]['headers']['token'] = token
+        with open(cls.project_directory + environment_path, "w", encoding="utf-8") as f:
+            yaml.dump(environment, f)
 
     @classmethod
     def read_case(cls):
@@ -38,18 +49,18 @@ class ReadFile:
             case_name = k
             if v['is_run'] == True:
                 v['case_title'] = case_name
-                if v['precondition_sql']!=None:
+                if v['precondition_sql'] != None:
                     for i in v['precondition_sql']:
                         mysql_db.execute_db(i)
-                if v['data']!=None:
-                    sql_k_list=[]
-                    sql_v_list=[]
-                    for data_k,data_v in  v['data'].items():
+                if v['data'] != None:
+                    sql_k_list = []
+                    sql_v_list = []
+                    for data_k, data_v in v['data'].items():
                         if 'sql-' in data_v:
                             sql_k_list.append(data_k)
-                            sql_result=mysql_db.select_db(data_v[4:])
+                            sql_result = mysql_db.select_db(data_v[4:])
                             sql_v_list.append(sql_result)
-                    new_v=dict(zip(sql_k_list,sql_v_list))
+                    new_v = dict(zip(sql_k_list, sql_v_list))
                     v['data'].update(new_v)
                 yield v
 
@@ -74,16 +85,17 @@ class ReadFile:
             for i in exclude_file:
                 file_list.remove(i)
         return file_list
+
     @classmethod
-    def case_file_location(cls,case_title):
+    def case_file_location(cls, case_title):
         '''
         :param case_name: 用例名称
         :return: 判断这个用例名称是不是在哪一个文件里面（前提用例名称唯一），返回文件名（含路径）
         '''
         path_list = cls.file_execute_list()
         for i in path_list:
-           if case_title in  cls.read_yaml(i).keys():
-               return i
+            if case_title in cls.read_yaml(i).keys():
+                return i
 
 
 if __name__ == '__main__':
