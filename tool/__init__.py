@@ -24,7 +24,7 @@ def requests_environment_info(environment=Environment):
         request_info = env_info[Environment]
         return {'ip': request_info['http'] + request_info['domain_name'], 'headers': request_info['headers']}
     except Exception as e:
-        print(f'读取配置信息初次：{e}')
+        print(f'读取配置信息出错：{e}')
 
 
 def get_token():
