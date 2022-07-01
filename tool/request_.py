@@ -9,15 +9,14 @@ import json
 
 import requests
 from tool import requests_environment_info
-from config.config import Environment
 from tool.allure_ import allure_description, allure_step_no
 from tool.log import logger
 
 class Requests:
     @classmethod
     def get(cls, path):
-        url = requests_environment_info(Environment)['ip'] + path
-        headers = requests_environment_info(Environment)['headers']
+        url = requests_environment_info()['ip'] + path
+        headers = requests_environment_info()['headers']
         allure_step_no(f'最终请求地址 {url}')
         logger.info(f'get请求的最终请求地址:{url}')
         result = requests.get(url=url, headers=headers).json()
@@ -27,8 +26,8 @@ class Requests:
 
     @classmethod
     def post(cls, path, data):
-        url = requests_environment_info(Environment)['ip'] + path
-        headers = requests_environment_info(Environment)['headers']
+        url = requests_environment_info()['ip'] + path
+        headers = requests_environment_info()['headers']
         allure_step_no(f'最终请求地址 {url}')
         allure_description(f'请求参数:{data}')
         logger.info(f'post请求的最终请求地址:{url},请求参数{data}')

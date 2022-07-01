@@ -27,13 +27,12 @@ class ReadFile:
 
     @classmethod
     def yaml_write_token(cls, token):
-        if Environment == 'test':
-            test_or_pro = 'test_environment'
-        else:
-            test_or_pro = 'pro_environment'
         environment_path = 'config/environment.yaml'
+        # 把配置先文件读出来
         environment = cls.read_yaml(environment_path)
-        environment[test_or_pro]['headers']['token'] = token
+        # 把token赋值给对应的环境信息
+        environment[Environment]['headers']['token'] = token
+        # 重写写入环境信息,这里之所以用这个cls.project_directory，应该read_yaml这个方法里面有，但是这个没有
         with open(cls.project_directory + environment_path, "w", encoding="utf-8") as f:
             yaml.dump(environment, f)
 
