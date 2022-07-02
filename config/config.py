@@ -15,6 +15,6 @@ exclude_dir=['c','ctms']
 #执行用例要排除的case下的文件
 exclude_file=[]
 #数据库配置，使用数据库操作时使用
-MYSQL_CONFIG=("101.43.63.72",3306, 'root', '123456', 'test')
+MYSQL_CONFIG=("1xx",3306, 'root', '123456', 'test')
 ## 钉钉方法路径，配置发送钉钉
 dd_path=r'D:\python2022\pytest_api_2022.6.10\tool\dd_push.py'
