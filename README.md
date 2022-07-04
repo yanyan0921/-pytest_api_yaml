@@ -22,6 +22,12 @@ https://blog.csdn.net/aaaaaaaaanjjj/article/details/125274053
 #### 安装教程
 
 下载依赖requirements.txt
+环境安装和启动的坑
+ 1.pip install allure-pytest 这个也使用2.8版本
+ 2.windows安装allure 和系统变量配置（还需要配置jdk）（我这个allure是2.8），如果pycharm打开项目后配置的allure路径，一定要重启pycharm
+ 3.日志文件位置，改为当前项目日志文件夹的绝对路径
+ 4.mock接口的地址，要改成当前mock接口地址
+
 
 #### 使用说明
 我配置config.py文件里的数据库域名是错误的，使用自己的数据库，设置用例里面的sql
