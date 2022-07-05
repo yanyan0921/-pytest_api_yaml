@@ -67,7 +67,7 @@ class ReadFile:
     def file_execute_list(cls, exclude_file=exclude_file, exclude_dir=exclude_dir):
         '''
         :param exclude_dir: 要排除的目录（二级目录）例子：ctms  list格式
-        :param exclude_file: 要排除的文件（case目录下所有文件）例子：case/ctms/test.yaml   case/waybill.yaml list格式
+        :param exclude_file: 要排除的文件（case目录下所有文件）例子：case/ctms/ctms_main.yaml   case/waybill.yaml list格式
         :return: 获取case下的所有用例文件列表,最多支持二级目录,通用排除文件返回最终要执行的用例文件
         '''
         file_list = []
@@ -118,12 +118,12 @@ class ReadFile:
 
 
 if __name__ == '__main__':
-    ReadFile.file_execute_list([], ['c', 'ctms'])
+    ReadFile.file_execute_list([], ['test', 'ctms'])
     # 路径使用读取文件的相对路径
     # 读取环境配置文件测试
     # print(ReadFile.read_yaml('config/environment.yaml'))
     # 读取用例文件测试
-    # case_data = ReadFile.read_yaml('case/test.yaml')
+    # case_data = ReadFile.read_yaml('case/ctms_main.yaml')
     # print(case_data)
     # 测试用例数据生成器返回
     # case_list=ReadFile.read_case()
