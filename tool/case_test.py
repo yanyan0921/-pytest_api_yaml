@@ -36,7 +36,8 @@ def case_assert_result(case_data):
         '''参数替换和参数依赖操作必须在一个页面里面，不然页面切换参数池会重置为{}'''
         if ParameterSetting.data_is_replace(case_data['data']):
             data = ParameterSetting.parameter_setting(case_data['data'],'get')
-        data = case_data['data']
+        else:
+            data = case_data['data']
         api_response = Requests.post(case_data['path'], data)
         extract_key = case_data['extract_key']
         replace_(extract_key,api_response)

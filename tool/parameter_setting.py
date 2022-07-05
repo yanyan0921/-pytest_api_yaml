@@ -50,7 +50,7 @@ class ParameterSetting:
                     v = jsonpath(cls.access_value, v)[0]
                     data[k] = v
             for k, v in data.items():
-                if 'random' in v:
+                if 'random' in str(v):
                     data[k] = eval(v)
             return data
 
