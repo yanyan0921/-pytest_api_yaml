@@ -96,6 +96,26 @@ class ReadFile:
             if case_title in cls.read_yaml(i).keys():
                 return i
 
+    @classmethod
+    def check_case_title_is_sole(cls):
+        '''
+        :return: 检查是否有重复的用例名称，放到全局前置,True就是有重复的，False就是没有
+        '''
+        from collections import Counter
+        execute_list = cls.file_execute_list()
+        case_title_list = []
+        for i in execute_list:
+            case_dict = cls.read_yaml(i)
+            case_key_list = [i for i in case_dict.keys()]
+            case_title_list += case_key_list
+        b = dict(Counter(case_title_list))
+        repetition = {key: value for key, value in b.items() if value > 1}
+        if bool(repetition):
+            logger.error(f'有重复的用例标题，请检查所有要执行的用例文件，重复标题和重复次数{repetition}')
+            return True
+        else:
+            return False
+
 
 if __name__ == '__main__':
     ReadFile.file_execute_list([], ['c', 'ctms'])
