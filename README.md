@@ -19,6 +19,12 @@ tool功能：
 
 #### 框架教程
 https://blog.csdn.net/aaaaaaaaanjjj/article/details/125274053
+#### 框架功能演示视频
+https://www.bilibili.com/video/BV1vU4y1S7oG
+#### 微信群，加我微信拉你，备注下框架或者测试啥的
+![输入图片说明](70d4aff3a066969c7e43802eb52a65b.jpg)
+
+
 #### 安装教程
 
 下载依赖requirements.txt
