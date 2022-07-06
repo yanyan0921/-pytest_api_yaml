@@ -55,7 +55,7 @@ class ReadFile:
                     sql_k_list = []
                     sql_v_list = []
                     for data_k, data_v in v['data'].items():
-                        if 'sql-' in data_v:
+                        if 'sql-' in str(data_v):
                             sql_k_list.append(data_k)
                             sql_result = mysql_db.select_db(data_v[4:])
                             sql_v_list.append(sql_result)

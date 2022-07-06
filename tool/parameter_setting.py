@@ -42,7 +42,7 @@ class ParameterSetting:
             print(1)
         if type == 'get':
             for k, v in data.items():
-                if '$.' in v:
+                if '$.' in str(v):
                     if not jsonpath(cls.access_value, v):
                         logger.error(f'依赖参数出现问题，依赖表达式{v}，参数池{cls.access_value}')
                         return {'错误信息': '未读取到参数'}
