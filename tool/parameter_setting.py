@@ -7,6 +7,8 @@
 参数处理
 '''
 from jsonpath import jsonpath
+
+from tool import request_data_nest_replace
 from tool.log import logger
 from tool.function import random_str, random_time, random_number
 
@@ -42,6 +44,11 @@ class ParameterSetting:
             print(1)
         if type == 'get':
             for k, v in data.items():
+                '''请求多级嵌套'''
+                if '^' in str(v):
+                    v = request_data_nest_replace(cls.access_value, v)
+                data[k] = v
+                '''请求参数只有一个层级'''
                 if '$.' in str(v):
                     if not jsonpath(cls.access_value, v):
                         logger.error(f'依赖参数出现问题，依赖表达式{v}，参数池{cls.access_value}')
