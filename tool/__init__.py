@@ -6,8 +6,9 @@ import requests
 from jsonpath import jsonpath
 
 from config.config import Environment
+from tool.log import logger
 from tool.read_file import ReadFile
-
+from tool.function import random_time, random_str, random_number
 
 def get_ip():
     '''获取本机ip地址'''
@@ -47,15 +48,22 @@ def request_data_nest_replace(access_value, dict_v):
     :return: 多层请求参数被替换后的值
     '''
     replace_list = re.findall('\^(.*?)\^', str(dict_v))
+    logger.info(f'多层请求参数中的替换表达式:{replace_list}')
     for i in replace_list:
-        replace_value = jsonpath(access_value, i)
-        if replace_value != False:
-            bei_replace = f'^{i}^'  # '^$.waybillid^'
-            replace_value = replace_value[0]
-            if type(replace_value) == int:
-                dict_v = str(dict_v).replace(bei_replace, 'int' + str(replace_value))
-            else:
-                dict_v = str(dict_v).replace(bei_replace, str(replace_value))
+        # 一个一个的替换
+        if '$.' in i:
+            replace_value = jsonpath(access_value, i)
+            if replace_value != False:
+                replace_value = replace_value[0]
+        if 'random' in i:
+            replace_value = eval(i)
+        bei_replace = f'^{i}^'  # '^$.waybillid^'
+        # print(f'值类型：{type(replace_value)}，值{replace_value}')
+        # 如果是数字类型后续还需要处理，先加个int标识
+        if type(replace_value) == int:
+            dict_v = str(dict_v).replace(bei_replace, 'int' + str(replace_value))
+        else:
+            dict_v = str(dict_v).replace(bei_replace, str(replace_value))
     new_dict_v = int_replace_str(eval(dict_v))
     return new_dict_v
 
