@@ -25,6 +25,8 @@ class ParameterSetting:
         if data is None:
             return False
         for k, v in data.items():
+            if '^' in str(v):
+                return True
             if '$.' in v:
                 return True
         return False
