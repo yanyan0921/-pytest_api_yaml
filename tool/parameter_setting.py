@@ -24,15 +24,30 @@ class ParameterSetting:
         '''
         if data is None:
             return False
+            # 请求参数是单纯一个列表格式的情况
+        if type(data) == list:
+            for i in data:
+                if '$.' in str(i) or 'random' in str(i):
+                    return 'list_request'
+            return False
+            # 先检查是否有嵌套参数里面有指定替换格式,然后$.然后random
         for k, v in data.items():
-            if '^' in str(v):
-                return True
-            if '$.' in v:
+            if '^' in str(v) or '$.' in str(v) or 'random' in str(v):
                 return True
         return False
 
     @classmethod
-    def parameter_setting(cls, data: dict, type='get'):
+    def parameter_setting_list(cls, data: list):
+        i_wz = 0
+        for i in data:
+            if '$.' in str(i):
+                data[i_wz] = jsonpath(cls.access_value, i)[0]
+            if 'random' in str(i):
+                data[i_wz] = eval(i)
+            i_wz += 1
+        return data
+    @classmethod
+    def parameter_setting_dict(cls, data: dict, type='get'):
         '''
         :param data: 返回结果提取和参数依赖使用dict 例：{'bill': '$.bill'}
         :param type: save ：把数据存到参数池里面无返回，get读取参数池数据并返回新值
@@ -76,9 +91,9 @@ class ParameterSetting:
 
 
 if __name__ == '__main__':
-    ParameterSetting.parameter_setting({'a': 44, 'a1': 144, 'b': 1, 'g': 'wbg'}, 'save')
+    ParameterSetting.parameter_setting_dict({'a': 44, 'a1': 144, 'b': 1, 'g': 'wbg'}, 'save')
 
-    ParameterSetting.parameter_setting({'b': '$.b', 'g': '$.g'})
+    ParameterSetting.parameter_setting_dict({'b': '$.b', 'g': '$.g'})
     print(f'最终的参数池{ParameterSetting.access_value}')
 
     # print(ParameterSetting.extract_value({'data':{'id':'1'}},{'id':'$.data.id'}))

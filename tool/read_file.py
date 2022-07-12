@@ -51,7 +51,7 @@ class ReadFile:
                 if v['precondition_sql'] != None:
                     for i in v['precondition_sql']:
                         mysql_db.execute_db(i)
-                if v['data'] != None:
+                if v['data'] != None and type(v['data'])!=list:
                     sql_k_list = []
                     sql_v_list = []
                     for data_k, data_v in v['data'].items():
