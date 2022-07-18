@@ -3,26 +3,32 @@
 #### 介绍
 '''
 基于pytest+yaml+allure+requests搭建的接口自动化框架(提供测试接口基于fastapi)
-tool功能：
-	__init__: 读取具体的环境配置信息给requests_使用
-	requests_请求接口：requests二次封装,自动获取headers和域名信息
-	read_file文件读取：读取目录下yaml文件，支持排除指定文件和目录，最终返回字典格式的用例数据
-	parameter_setting参数设置：提供参数池，支持接口返回参数提取保存和接口请求参数提取（解决参数依赖）
-	log日志：保存运行日志记录
-	function函数：支持随机几位数的字符，数字和当前时间函数，直接在用例文件中使用
-	assert_断言操作：处理多个断言表达式，返回最终断言结果
-	case_test用例执行:处理从read_file读取出的原始用例数据，使用parameter_setting进行参数存储和提取，使用assert_进行断言，最后返回用例执行结果
-	allure_报告定制:allure.dynamic动态属性的简单封装
-	mysql_：数据库操作，用于前置sql，请求参数sql，断言sql
+    1、每条用例前置sql，请求参数sql，断言sql
+    2、requests二次封装，自动获取ip和header信息
+    3、allure动态方法封装（标题、描述、步骤）
+    4、钉钉机器人发生allure报告公司局域网内可以访问
+    5、log日志记录每个重要参数
+    6、多接口参数依赖（接口返回提取，请求使用）
+    7、token信息全局前置写入配置文件
+    8、用例文件支持多目录多文件运行，支持排除目录或者文件
+    9、定位运行的用例属于哪个文件
+    10、支持随机几位数字或者字符串
+    11、提供mock接口
+    12、多环境测试（需要配置要测试的环境名和不同环境token）
+    13、用例标题重复停止测试
+    14、支持多个断言条件
+    15、接口请求参数替换支持list:  [$.waybillid] ,一层json: {'c':$.c}  ,多层json: {'a':'a','c':[{'c1':^$.c1^},{'time':^random_time()^}]
 '''
 
 
-#### 框架教程
+#### 框架教程搭建
 https://blog.csdn.net/aaaaaaaaanjjj/article/details/125274053
-#### 框架功能演示视频
+#### 框架环境配置和使用教程
+https://blog.csdn.net/aaaaaaaaanjjj/article/details/125848419
+#### 框架搭建视频视频
 https://www.bilibili.com/video/BV1vU4y1S7oG
-#### 微信群，加我微信拉你，备注下框架或者测试啥的
-![输入图片说明](wx.png)
+#### 微信群
+![输入图片说明](wx.jpg)
 
 
 #### 安装教程
