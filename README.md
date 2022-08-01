@@ -31,6 +31,7 @@ https://www.bilibili.com/video/BV1vU4y1S7oG
 ![输入图片说明](wx.jpg)
 
 
+
 #### 安装教程
 
 下载依赖requirements.txt
