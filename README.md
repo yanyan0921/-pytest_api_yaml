@@ -27,9 +27,8 @@ https://blog.csdn.net/aaaaaaaaanjjj/article/details/125274053
 https://blog.csdn.net/aaaaaaaaanjjj/article/details/125848419
 #### 框架搭建视频视频
 https://www.bilibili.com/video/BV1vU4y1S7oG
-#### 微信群
-d
-![输入图片说明](wx.jpg)
+
+
 
 
 
