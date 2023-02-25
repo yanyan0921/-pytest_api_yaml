@@ -13,7 +13,7 @@ from tool.log import logger
 from tool import ReadFile
 
 
-
+@pytest.mark.skipif(ReadFile.check_case_title_is_sole(),reason='用例有重复标题')
 @pytest.mark.parametrize('case_data',ReadFile.read_case())
 def test_main(case_data:dict):
     case_title = case_data['case_title']

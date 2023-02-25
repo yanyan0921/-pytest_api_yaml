@@ -8,6 +8,8 @@
 
 import pymysql
 from config.config import MYSQL_CONFIG
+from tool.log import logger
+
 
 class MysqlDb():
 
@@ -28,11 +30,14 @@ class MysqlDb():
 
     def select_db(self, sql):
         """查询"""
-        self.cur.execute(sql)
-        data = self.cur.fetchall()
-
-        for k,v in data[0].items():
-            return v
+        try:
+            self.cur.execute(sql)
+            data = self.cur.fetchall()
+            # 返回值这样[{'title': '标题2'}]  我想要这样 标题2
+            for k, v in data[0].items():
+                return v
+        except Exception as e:
+            logger.error("sql查询操作出现错误：{}".format(e))
 
 
     def execute_db(self, sql):
@@ -41,7 +46,7 @@ class MysqlDb():
             self.cur.execute(sql)
             self.db.commit()
         except Exception as e:
-            print("操作出现错误：{}".format(e))
+            logger.error("操作出现错误：{}".format(e))
             self.db.rollback()
 
 mysql_db = MysqlDb(*MYSQL_CONFIG)
